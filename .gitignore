@@ -1,0 +1,13 @@
+# Dependencies and local build results
+node_modules/
+source/node_modules/
+source/dist/
+.vite/
+.vercel/
+.DS_Store
+Thumbs.db
+__pycache__/
+*.pyc
+.env
+.env.*
+!.env.example

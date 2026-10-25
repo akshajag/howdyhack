@@ -1,0 +1,55 @@
+THE 12TH TIDE  -  play it on your own computer
+==============================================
+
+A coastal endless runner in the browser. Run the beach and the pier, jet-ski Bolivar Channel, surf Shorebreak Point,
+dive into the coral canyon and the shipwreck grotto (and past the Kraken at the back of it), and ride out the 12th
+tide. Play as the runner, or as Reveille (the land course: no diving). Steer with your body, your head or your hand in front of the
+webcam, or with the keyboard.
+
+QUICK START (no install beyond Python, which most Macs and Linux machines already have)
+  macOS    double-click  start-mac.command   (if it's blocked: right-click it > Open)
+  Windows  double-click  start-windows.bat
+  Linux    run           ./start-linux.sh
+  ...or in a terminal in this folder:   python3 serve.py   (Windows: py serve.py)
+
+A browser tab opens at http://127.0.0.1:8080 . Keep the little server window open while you play; close it (or
+Ctrl+C) to stop. If you don't have Python, the scripts fall back to Node.js (npx http-server). Opening
+play/index.html directly from the file system does NOT work: browsers block that, so it needs the local server.
+
+BROWSER: a recent Chrome or Edge is best (Firefox and Safari work too). A laptop or desktop with a GPU; it adapts the
+graphics quality automatically (Settings lets you choose).
+
+DEMO COURSE: on the title screen, switch "Demo course" on. It's a set course that shows the whole game in about three
+minutes (beach, pier, surfing, the reef, the grotto, the storm and the 12th tide, then the rainbow), gentler than a
+normal run so a presenter gets through it. Same as the seed DEMO.
+
+CONTROLS
+  Keyboard   A / D or arrows: switch lanes (hold to steer under water)   Space or W: jump   S: slide
+             W / S under water: swim up / down   Shift: surge   Esc: pause   R: restart
+             On the board: the same; from the left lane, A again carves up the wave and launches you off the lip
+             (a backflip and a 360; A / D in the air spin more, Space grabs)
+  Camera     "Play with the camera", then pick Body, Head or Hand and hold still a second to calibrate.
+             Body: lean or step left / right for a lane, hop to jump, duck to slide, both hands up to surge;
+                   under water your body is where you swim.
+             Head: slip your head left / right (one lane per slip, coming back to the middle does nothing), bob up to
+                   jump, duck to slide; under water your head is where you swim.
+             Hand: hand left / centre / right picks the lane, flick up = jump, flick down = slide, fist = surge.
+             With a camera the obstacles get 30% more room.
+  Jet ski   hold A / D to steer anywhere across the channel (camera: you ride where you are), Space hops, S ducks;
+            hit a floating ramp for a backflip.
+  The first run is a short slow-motion tutorial (it can be replayed from How to play).
+
+The camera tracking models (MediaPipe) load from the internet the first time, so camera play needs a connection;
+keyboard play works offline. The camera only works from a local address or https, which is why the game runs on
+127.0.0.1.
+
+HANDY URL OPTIONS (add to the address, e.g. http://127.0.0.1:8080/?seed=DEMO&tutorial=0)
+  ?seed=ABC123     the same course every time (DEMO: the demo course)   ?tutorial=0   skip the tutorial
+  ?quality=Low|Medium|High                                             ?mute=1       no sound
+
+FOR DEVELOPERS: the source is in source/ (TypeScript + three.js + Vite). With Node.js 18+:
+  cd source
+  npm install
+  npm run dev          -> http://127.0.0.1:5173
+  npm run build        -> a fresh build in source/dist
+README.md describes the game; ASSET_CREDITS.md lists the third-party models (CC0 / CC-BY) and their creators.
